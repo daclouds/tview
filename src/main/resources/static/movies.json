@@ -1,0 +1,19 @@
+{
+    "hoppin":{
+        "totalCount":10,
+        "movies":{
+            "movie":[
+                {
+                    "movieId": "P00000029441",
+                    "title": "뽀로로",
+                    "genreIds": "001",
+                    "genreNames": "드라마",
+                    "ratingAverage": "7.5",
+                    "participant": "13",
+                    "thumbnailImage": "http://img.hoppin.nate.com/thumbnails/175_130_21/GLOSSARY/TV/GL0000222254/IMAGE/STC/STC_GL0000222254_1_1_S00_0934.jpg",
+                    "linkUrl": "http://www.hoppin.nate.com/serviceportal/movie/movieDetail/searchDetailView.do?dpRepProdId=P00000025904"
+                }
+            ]
+        }
+    }
+}

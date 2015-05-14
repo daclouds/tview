@@ -1,16 +1,23 @@
 package io.github.tview.hoppin.service;
 
-import io.github.tview.AppConfig;
+import static org.junit.Assert.assertNotNull;
+import io.github.tview.TviewApplication;
 import io.github.tview.hoppin.model.HoppinApiRequest;
+
+import java.util.LinkedHashMap;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import com.jayway.jsonpath.JsonPath;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=AppConfig.class)
+@SpringApplicationConfiguration(classes = TviewApplication.class)
+@WebAppConfiguration
 public class HoppinServiceTest {
 
 	@Autowired
@@ -19,8 +26,17 @@ public class HoppinServiceTest {
 	@Test
 	public void testMovies() throws Exception {
 		HoppinApiRequest request = new HoppinApiRequest();
-		String movies = hoppinService.movies(request);
-		System.out.println(movies);
+		String response = hoppinService.movies(request);
+		LinkedHashMap<String, JsonPath> movies = JsonPath.parse(response).read("$.hoppin.movies");
+		assertNotNull(movies);
+	}
+	
+	@Test
+	public void testSeriesList() throws Exception {
+		HoppinApiRequest request = new HoppinApiRequest();
+		String response = hoppinService.seriesList(request);
+		LinkedHashMap<String, JsonPath> seriesList = JsonPath.parse(response).read("$.hoppin.seriesList");
+		assertNotNull(seriesList);
 	}
 
 }

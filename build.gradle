@@ -32,11 +32,12 @@ repositories {
 dependencies {
 	compile(
 		"org.springframework.boot:spring-boot-starter-web", 
-		"org.projectlombok:lombok:1.16.4", 
-		"org.springframework.boot:spring-boot-starter-security",
-		"org.springframework.data:spring-data-commons:1.9.1.RELEASE"
+		"org.projectlombok:lombok:1.16.4" 
 	)
-    testCompile("org.springframework.boot:spring-boot-starter-test") 
+    testCompile(
+		"org.springframework.boot:spring-boot-starter-test",
+		"com.jayway.jsonpath:json-path:2.0.0"
+	) 
 }
 
 
