@@ -32,7 +32,8 @@ repositories {
 dependencies {
 	compile(
 		"org.springframework.boot:spring-boot-starter-web", 
-		"org.projectlombok:lombok:1.16.4" 
+		"org.projectlombok:lombok:1.16.4",
+		'org.springframework:springloaded:1.2.3.RELEASE'
 	)
     testCompile(
 		"org.springframework.boot:spring-boot-starter-test",
