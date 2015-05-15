@@ -14,15 +14,15 @@ import org.springframework.stereotype.Service;
 public class HoppinServiceImpl implements HoppinService {
 
 	@Override
-	public String movies(HoppinApiRequest request) {
-		Resource resource = new ClassPathResource("/static/movies.json");
+	public String series(HoppinApiRequest request) {
+		Resource resource = new ClassPathResource("/static/series.json");
 		String text = readTextfile(resource);
 		return text.replaceAll(" ", "");
 	}
 	
 	@Override
-	public String seriesList(HoppinApiRequest request) {
-		Resource resource = new ClassPathResource("/static/seriesList.json");
+	public String episodes(HoppinApiRequest request) {
+		Resource resource = new ClassPathResource("/static/episodes.json");
 		String text = readTextfile(resource);
 		return text.replaceAll(" ", "");
 	}

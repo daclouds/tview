@@ -9,22 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/movies")
+@RequestMapping(value="/series")
 public class HoppinController {
-
+	
 	@Autowired
 	HoppinService hoppinService;
 	
 	@RequestMapping(value={"", "/"}, produces=MediaType.APPLICATION_JSON_VALUE)
-	public String movies() {
-		HoppinApiRequest request = new HoppinApiRequest();
-		return hoppinService.movies(request);
+	public String movies(HoppinApiRequest request) {
+		return hoppinService.series(request);
 	}
 	
-	@RequestMapping(value="/{movieId}/seriesList", produces=MediaType.APPLICATION_JSON_VALUE)
-	public String seriesList() {
-		HoppinApiRequest request = new HoppinApiRequest();
-		return hoppinService.seriesList(request);
+	@RequestMapping(value="/{seriesId}/episodes", produces=MediaType.APPLICATION_JSON_VALUE)
+	public String seriesList(HoppinApiRequest request) {
+		return hoppinService.episodes(request);
 	}
 	
 }

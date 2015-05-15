@@ -26,7 +26,7 @@ public class HoppinServiceTest {
 	@Test
 	public void testMovies() throws Exception {
 		HoppinApiRequest request = new HoppinApiRequest();
-		String response = hoppinService.movies(request);
+		String response = hoppinService.series(request);
 		LinkedHashMap<String, JsonPath> movies = JsonPath.parse(response).read("$.hoppin.movies");
 		assertNotNull(movies);
 	}
@@ -34,7 +34,7 @@ public class HoppinServiceTest {
 	@Test
 	public void testSeriesList() throws Exception {
 		HoppinApiRequest request = new HoppinApiRequest();
-		String response = hoppinService.seriesList(request);
+		String response = hoppinService.episodes(request);
 		LinkedHashMap<String, JsonPath> seriesList = JsonPath.parse(response).read("$.hoppin.seriesList");
 		assertNotNull(seriesList);
 	}

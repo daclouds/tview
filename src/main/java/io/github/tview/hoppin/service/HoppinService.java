@@ -4,7 +4,7 @@ import io.github.tview.hoppin.model.HoppinApiRequest;
 
 public interface HoppinService {
 
-	public String movies(HoppinApiRequest request);
-	public String seriesList(HoppinApiRequest request); 
+	public String series(HoppinApiRequest request);
+	public String episodes(HoppinApiRequest request); 
 	
 }
