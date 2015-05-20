@@ -34,7 +34,7 @@ public class HoppinServiceTest {
 	@Test
 	public void testSeriesList() throws Exception {
 		HoppinApiRequest request = new HoppinApiRequest();
-		String response = hoppinService.episodes(request);
+		String response = hoppinService.episodes(request, "GL0000234016");
 		LinkedHashMap<String, JsonPath> seriesList = JsonPath.parse(response).read("$.hoppin.seriesList");
 		assertNotNull(seriesList);
 	}

@@ -7,21 +7,8 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-	<div class="carddemoBasicUsage" ng-controller="SeriesCtrl">
-	  <md-content>
-	    <md-card ng-repeat="series in seriesList.hoppin.seriesList.series">
-	      <md-card-content>
-	        <h2 class="md-title">{{series.title}}</h2>
-	        <p>
-	        </p>
-	      </md-card-content>
-	      <div class="md-actions" layout="row" layout-align="end center">
-	        <md-button class="md-raised md-primary">{{series.genreNames}}</md-button>
-	        <md-button>{{series.ratingAverage}}</md-button>
-	      </div>
-	    </md-card>
-	  </md-content>
-	</div>
+	<div class="page {{ pageClass }}" ng-view></div>
+	
 	<script src="/bower_components/angular/angular.min.js"></script>
 	<script src="/bower_components/angular-animate/angular-animate.min.js"></script>
 	<script src="/bower_components/angular-route/angular-route.min.js"></script>

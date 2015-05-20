@@ -37,8 +37,8 @@ public class HoppinController {
 	}
 	
 	@RequestMapping(value="/{seriesId}/episodes", produces=MediaType.APPLICATION_JSON_VALUE)
-	public String seriesList(HoppinApiRequest request) {
-		return hoppinService.episodes(request);
+	public String seriesList(HoppinApiRequest request, String seriesId) {
+		return hoppinService.episodes(request, seriesId);
 	}
 	
 }
