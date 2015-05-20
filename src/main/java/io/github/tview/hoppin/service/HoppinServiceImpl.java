@@ -1,23 +1,63 @@
 package io.github.tview.hoppin.service;
 
+import io.github.tview.hoppin.model.HoppinApiRequest;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import io.github.tview.hoppin.model.HoppinApiRequest;
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
+@Slf4j
 public class HoppinServiceImpl implements HoppinService {
 
+	private static final String ACCESS_TOKEN = "b059f2af-894b-4faf-b413-309dcc67245d";
+	private static final String APP_KEY = "1b06d58e-3659-31e4-8c24-4952983ddb5b";
+	@Autowired
+	RestTemplate restTemplate;
+	
 	@Override
 	public String series(HoppinApiRequest request) {
-		Resource resource = new ClassPathResource("/static/series.json");
-		String text = readTextfile(resource);
-		return text.replaceAll(" ", "");
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+		headers.set("access_token", ACCESS_TOKEN);
+		headers.set("appKey", APP_KEY);
+
+		String url = "http://apis.skplanetx.com/hoppin/tvseries";
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+				.queryParam("version", request.getVersion())
+				.queryParam("page", request.getPage())
+				.queryParam("count", request.getCount())
+				.queryParam("order", request.getOrder())
+				.queryParam("genreId", request.getGenreId());
+
+		HttpEntity<?> entity = new HttpEntity<>(headers);
+		ResponseEntity<String> response = null;
+		try {
+			response = restTemplate.exchange(builder.build().encode().toUri(), HttpMethod.GET, entity, String.class);
+		} catch (HttpStatusCodeException e) {
+			log.debug(e.getResponseBodyAsString());
+			return e.getResponseBodyAsString();
+		}
+		String body = null;
+		if (response != null) {
+			body = response.getBody();
+		}
+		return body;
 	}
 	
 	@Override

@@ -11,6 +11,15 @@
                     "ratingAverage": "7.5",
                     "participant": "13",
                     "linkUrl": "http://www.hoppin.nate.com/serviceportal/movie/movieDetail/searchDetailView.do?dpRepProdId=P00000025904"
+                },
+                {
+                    "seriesId": "GL0000234016",
+                    "title": "뽀로로",
+                    "genreIds": "001",
+                    "genreNames": "드라마",
+                    "ratingAverage": "7.5",
+                    "participant": "13",
+                    "linkUrl": "http://www.hoppin.nate.com/serviceportal/movie/movieDetail/searchDetailView.do?dpRepProdId=P00000025904"
                 }
             ]
         }

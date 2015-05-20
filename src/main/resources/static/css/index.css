@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+.carddemoBasicUsage md-card {
+  min-height: 150px; 
+}

@@ -6,8 +6,11 @@ import lombok.Data;
 public class HoppinApiRequest {
 
 	String uri;
-	Integer version;
-	Integer page;
-	Integer count;
+	Integer version = 1;
+	Integer page = 1;
+	Integer count = 10;
+	
+	String order = "";
+	String genreId = "";
 	
 }
