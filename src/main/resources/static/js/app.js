@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('seriesApp', ['ngRoute', 'controllers', 'services', 'ngMaterial', 'ngAnimate']);
+var app = angular.module('seriesApp', ['ngRoute', 'controllers', 'services', 'ngMaterial', 'ngAnimate', 'infinite-scroll']);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -11,6 +11,6 @@ app.config(function($routeProvider) {
 	.when('/episodes/:seriesId', {
 		templateUrl: 'page-episodes.html',
 		controller: 'EpisodesCtrl'
-	});
+	}).otherwise({redirectTo: '/'});
 });
 

@@ -1,6 +1,6 @@
 <div class="carddemoBasicUsage" ng-controller="SeriesCtrl">
   <md-content>
-    <md-card ng-repeat="series in seriesList.hoppin.seriesList.series">
+    <md-card ng-repeat="series in seriesList.hoppin.seriesList.series" infinite-scroll="myPagingFunction()" infinite-scroll-distance="3">
       <md-card-content ng-click="episodes(series.seriesId)">
         <h2 class="md-title">{{series.title}}</h2>
         <p>

@@ -8,12 +8,15 @@ controllers.controller('SeriesCtrl', [ '$scope', 'Series', function($scope, Seri
 		location.href = "#episodes/" + seriesId; 
 	};
 	
-	var seriesList = Series.query(function(data) {
+	$scope.myPagingFunction = function() {
+	};
+	
+	Series.query(function(data) {
 		$scope.seriesList = data;
 	}, function(error) {
 		console.log(error.data.error);
 	});
-
+	
 }]);
 
 controllers.controller('EpisodesCtrl', [ '$scope', '$routeParams', function($scope, $routeParams) {
