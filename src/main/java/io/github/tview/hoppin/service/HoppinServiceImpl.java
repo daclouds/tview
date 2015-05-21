@@ -1,5 +1,6 @@
 package io.github.tview.hoppin.service;
 
+import io.github.tview.hoppin.HoppinConfig;
 import io.github.tview.hoppin.model.HoppinApiRequest;
 
 import java.io.BufferedReader;
@@ -25,10 +26,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 public class HoppinServiceImpl implements HoppinService {
 
-	private static final String ACCESS_TOKEN = "b059f2af-894b-4faf-b413-309dcc67245d";
-	private static final String APP_KEY = "1b06d58e-3659-31e4-8c24-4952983ddb5b";
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	HoppinConfig hoppinConfig;
 	
 	@Override
 	public String series(HoppinApiRequest request) {
@@ -71,8 +73,8 @@ public class HoppinServiceImpl implements HoppinService {
 	private HttpHeaders headers() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-		headers.set("access_token", ACCESS_TOKEN);
-		headers.set("appKey", APP_KEY);
+		headers.set("access_token", hoppinConfig.getAccessToken());
+		headers.set("appKey", hoppinConfig.getAppKey());
 		return headers;
 	}
 
